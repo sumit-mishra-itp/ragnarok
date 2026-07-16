@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: KAN-124 - Simple Welcome Web Application
+  description: A minimal Flask web application that displays a welcome message
+  version: 1.0.0
+  contact:
+    name: API Support
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+paths:
+  /:
+    get:
+      summary: Welcome endpoint
+      description: Returns a welcome message for Neurostack users
+      operationId: getWelcome
+      tags:
+        - Welcome
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Hello Neurostack User
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns the health status of the application
+      operationId: getHealth
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+                  service:
+                    type: string
+                    example: ragnarok
+tags:
+  - name: Welcome
+    description: Welcome message endpoints
+  - name: Health
+    description: Health check endpoints
